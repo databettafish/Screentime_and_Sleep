@@ -15,23 +15,23 @@ SQL analysis performed in Google BigQuery and visualizations created in Tableau.
 
 ## Question 1: Do younger users spend more leisure time on their phones?
 Result: Users in the 45+ age group reported the highest average leisure screen time, but this may be heavily influenced by a single outlier (16 hours/day). Median or trimmed averages may give a more representative view of typical screen use.
-    (Insert chart)
+![Average Leisure Screen Time by Age Group](chart1_age_leisurescreentime.png)
 
 ## Question 2: Do extreme screen users sleep less?
 Results: Participants in the top 10% of screen time sleep roughly **1 hour less per night** than those in the lowest 10%.
-    (Insert chart)
+![](chart2_screenextremes_sleeptime.png)
 
 ## Question 3: Does higher screen time relate to poorer sleep quality?
 Results: Correlation between screen time and sleep quality **r = -0.27**, indicating a moderate negative relationship.
-(Insert chart)
+![](chart3_screentime_sleepquality.png)
 
 ## Question 4: Do remote workers have higher screen time?
 Results: Remote workers report **highest average daily screen time** compared to other work modes.
-    (Insert chart)    
+![](chart4_workmode_screentime.png)   
 
 ## Question 5: Do remote workers report lower sleep quality?
 Results: Remote workers show slightly **lower average sleep quality** scores compared to hybrid and in-person workers.
-(Insert chart)
+![](chart5_workmode_sleepquality.png)   
 ## Tools Used:
 - Google BigQuery (SQL analysis)
 - Tableau (visualizations)
