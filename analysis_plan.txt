@@ -1,0 +1,9 @@
+
+Goal: Explore the relationship between the factors of screen time, work and sleep.
+
+Questions:
+1. Do younger users spend more leisure time on their phones?
+2. Of people in the top and bottom 10% of screen hours, do those with more screen time see an impact on sleep time?
+3. Use users with greater screen time report poorer sleep quality? 
+4. Do remote workers have higher reported screen times?
+5. DO remote workers have lower reported sleep quality?

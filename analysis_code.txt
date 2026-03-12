@@ -1,0 +1,79 @@
+
+Goal: Explore the relationship between the factors of screen time, work and sleep.
+
+Questions:
+1. Do younger users spend more leisure time on their phones?
+
+
+SELECT
+  CASE 
+    WHEN age < 25 THEN '16-24'
+    WHEN age BETWEEN 25 AND 34 THEN '25-34'
+    WHEN age BETWEEN 35 AND 44 THEN '35-44'
+    ELSE '45+'
+  END AS age_group,
+  AVG(leisure_screen_hours) AS avg_leisure_hours,
+  COUNT(*) AS n_users
+FROM `modern-venture-485602-e4.portfolio_projects.screen_time_mental_wellness`
+GROUP BY age_group
+ORDER BY age_group;
+
+
+2. Of people in the top and bottom 10% of screen hours, do those with more screen time see an impact on sleep time?
+
+WITH percentiles AS (
+  SELECT
+    screen_time_hours,
+    PERCENT_RANK() OVER (ORDER BY screen_time_hours) AS pct_rank,
+    sleep_hours
+  FROM `modern-venture-485602-e4.portfolio_projects.screen_time_mental_wellness`
+)
+SELECT
+  CASE 
+    WHEN pct_rank <= 0.1 THEN 'Bottom 10%'
+    WHEN pct_rank >= 0.9 THEN 'Top 10%'
+  END AS grouped_users,
+  AVG(sleep_hours) AS avg_sleep_hours,
+  COUNT(*) AS n_users
+FROM percentiles
+WHERE pct_rank <= 0.1 OR pct_rank >= 0.9
+GROUP BY grouped_users;
+
+3. Use users with greater screen time report poorer sleep quality? 
+
+## CORRELATION CALCULATION BETWEEN SCREENTIME AND SLEEP QUALITY
+SELECT
+  CORR(screen_time_hours, sleep_quality_1_5) AS correlation
+  FROM `modern-venture-485602-e4.portfolio_projects.screen_time_mental_wellness`;
+
+
+##SCREENTIME AND SLEEP QUALITY RAW DATA
+SELECT
+	screen_time_hours,
+	sleep_quality_1_5
+FROM
+	`modern-venture-485602-e4.portfolio_projects.screen_time_mental_wellness`
+ORDER BY
+	screen_time_hours,
+	sleep_quality_1_5;
+
+
+4. Do remote workers have higher reported screen times?
+
+SELECT
+  work_mode,
+  AVG(screen_time_hours) AS avg_screen_hours,
+  COUNT(*) AS n_users
+FROM `modern-venture-485602-e4.portfolio_projects.screen_time_mental_wellness`
+GROUP BY work_mode
+ORDER BY avg_screen_hours DESC;
+
+5. Do remote workers have lower reported sleep quality compared to hybrid and in-person workers?
+
+SELECT
+  work_mode,
+  AVG(sleep_quality_1_5) AS avg_sleep_quality,
+  COUNT(*) AS n_users
+FROM `modern-venture-485602-e4.portfolio_projects.screen_time_mental_wellness`
+GROUP BY work_mode
+ORDER BY avg_sleep_quality ASC;
