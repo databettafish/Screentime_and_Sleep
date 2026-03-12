@@ -1,4 +1,4 @@
-# Screen Time and Mental Wellness Analysis
+# Screen Time and Sleep Analysis
 Project Goal: Explore relationships between screen time, work mode, and sleep patterns.
 
 Dataset: Mental Wellness & Screen Time Survey (400 participants).
@@ -14,8 +14,8 @@ Dataset: Mental Wellness & Screen Time Survey (400 participants).
 SQL analysis performed in Google BigQuery and visualizations created in Tableau.
 
 ## Question 1: Do younger users spend more leisure time on their phones?
-
-    Result: Users in the oldest age group reported highest numbers of leisure screentime. 
+    Result: Users in the 45+ age group reported the highest average leisure screen time, but this is heavily influenced by a single outlier (16 hours/day).
+            Median or trimmed averages may give a more representative view of typical screen use.
     (Insert chart)
 
 ## Question 2: Do extreme screen users sleep less?
@@ -33,8 +33,7 @@ SQL analysis performed in Google BigQuery and visualizations created in Tableau.
 ## Question 5: Do remote workers report lower sleep quality?
     Results: Remote workers show slightly lower average sleep quality scores compared to hybrid and in-person workers.
     (Insert chart)
-`
-## Toold Used:
+## Tools Used:
 - Google BigQuery (SQL analysis)
 - Tableau (visualizations)
 - GitHub (project documentation)
